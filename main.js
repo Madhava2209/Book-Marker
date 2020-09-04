@@ -69,7 +69,7 @@ function fetchBookmarks(){
         var date = bookmarks[i].date;
 
 
-        bookmarksResults.innerHTML+='<div class="container" style="padding:10px; background-color:rgb(230, 220, 220);"><h4>'+name+'</h4>'+
+        bookmarksResults.innerHTML+='<div class="container" style="padding:10px; background-color:rgb(230, 220, 220);flex:1 0 21%; margin:1%;"><h4>'+name+'</h4>'+
                                 '<label>'+date+'</label>'+
                                 '<a href="'+url+'" target="_blank" class="btn btn-default">Visit</a>'+
                                 '<a href="#" onclick="deleteBookmark(\''+url+'\')" class="btn btn-primary">Delete</a>'+
