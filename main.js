@@ -3,10 +3,16 @@ document.getElementById('myform').addEventListener("submit", saveBookMark);
 function saveBookMark(e){
     var siteName = document.getElementById("siteName").value;
     var siteUrl = document.getElementById("siteUrl").value;
-
+    var d = new Date();
+    var dd = String(d. getDate()). padStart(2, '0');
+    var m = String(d. getMonth() + 1). padStart(2, '0');
+    
+    var y = d. getFullYear();
+    var date1 = dd+ '/'+m+'/'+y;
     var bookmark={
         name: siteName,
-        url: siteUrl
+        url: siteUrl,
+        date : date1
     }
 
     var regexQuery = "^(https?://)?(www\\.)?([-a-z0-9]{1,63}\\.)*?[a-z0-9][-a-z0-9]{0,61}[a-z0-9]\\.[a-z]{2,6}(/[-\\w@\\+\\.~#\\?&/=%]*)?$";
@@ -60,12 +66,14 @@ function fetchBookmarks(){
     for(var i=0; i<bookmarks.length;i++){
         var name = bookmarks[i].name;
         var url = bookmarks[i].url;
+        var date = bookmarks[i].date;
 
 
-        bookmarksResults.innerHTML+='<div class="container" style="padding:10px;display:flex;"><h4>'+name+
+        bookmarksResults.innerHTML+='<div class="container" style="padding:10px;"><h4>'+name+'</h4>'+
+                                '<label>'+date+'</label>'+
                                 '<a href="'+url+'" target="_blank" class="btn btn-default">Visit</a>'+
                                 '<a href="#" onclick="deleteBookmark(\''+url+'\')" class="btn btn-primary">Delete</a>'+
-                                '</h4>'+
+                                
                                 '</div>';
     }
 }
